@@ -1,15 +1,6 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-# yarn install
-# npx lint-staged
-# yarn build
-
-# make up-d \
-#   y/install \
-#   de/c c="npx lint-staged" \
-#   y/build
-
 CONTAINER_NAME="react-docker-project"
 DC="docker compose"
 
