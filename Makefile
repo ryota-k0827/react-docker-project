@@ -24,6 +24,9 @@ down:
 de:
 	$(de) $(container_name) sh
 
+de/c:
+	$(de) $(container_name) sh -c "$(c)"
+
 y/install:
 	$(de) $(container_name) sh -c "yarn install"
 	docker container cp $(container_name):/app/node_modules $(PWD)
@@ -54,10 +57,14 @@ y/upgrade:
 y/info:
 	$(de) $(container_name) sh -c "yarn info $(p)"
 
+y/build:
+	$(de) $(container_name) sh -c "yarn build"
+
 modules/cp:
 	docker container cp $(container_name):/app/node_modules $(PWD)
 
 rm/modules:
+	$(de) $(container_name) sh -c "rm -rf node_modules"
 	rm -rf node_modules
 
 rm/build:
