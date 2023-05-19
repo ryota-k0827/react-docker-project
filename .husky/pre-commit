@@ -10,7 +10,10 @@
 #   de/c c="npx lint-staged" \
 #   y/build
 
-docker compose up -d
-docker compose exec -T react-docker-project sh -c "yarn install"
-docker compose exec -T react-docker-project sh -c "npx lint-staged"
-docker compose exec -T react-docker-project sh -c "yarn build"
+CONTAINER_NAME="react-docker-project"
+DC="docker compose"
+
+${DC} up -d
+${DC} exec -T ${CONTAINER_NAME} sh -c "yarn install"
+${DC} exec -T ${CONTAINER_NAME} sh -c "npx lint-staged"
+${DC} exec -T ${CONTAINER_NAME} sh -c "yarn build"
