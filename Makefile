@@ -2,22 +2,14 @@ container_name := react-docker-project
 dc := docker compose
 de := docker exec -it
 
-init:
-	$(MAKE) build
-	$(dc) up -d
-	$(MAKE) y/install \
-		open/web \
-		y/dev \
-		down
+init: build up
 
 build:
 	$(dc) build --no-cache
+	$(MAKE) modules/cp
 
 up:
-	$(dc) up -d
-	$(MAKE) open/web \
-		y/dev \
-		down
+	$(dc) up
 
 down:
 	$(dc) down

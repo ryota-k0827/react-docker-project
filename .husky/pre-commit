@@ -5,9 +5,14 @@ CONTAINER_NAME="react-docker-project"
 DC="docker compose"
 
 function de_c {
-  ${DC} up -d
-  ${DC} exec -T ${CONTAINER_NAME} sh -x -c "$1"
-  ${DC} down
+  STATUS=`docker ps -f "name=${CONTAINER_NAME}" --format '{{ .Names }}'`
+  if [ "${STATUS}" = "${CONTAINER_NAME}" ]; then
+    ${DC} exec -T ${CONTAINER_NAME} sh -x -c "$1"
+  else
+    ${DC} up -d
+    ${DC} exec -T ${CONTAINER_NAME} sh -x -c "$1"
+    ${DC} down
+  fi
 }
 
 de_c "yarn install \

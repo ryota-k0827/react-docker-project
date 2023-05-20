@@ -10,3 +10,10 @@ WORKDIR /app
 
 # npmのアップデート
 RUN npm install -g npm@9.6.7
+
+# ホストのpackage.jsonをコンテナ内にコピー
+COPY package.json ./
+COPY yarn.lock ./
+
+# 依存関係のインストール
+RUN yarn install --frozen-lockfile
