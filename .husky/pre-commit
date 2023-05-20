@@ -7,12 +7,9 @@ DC="docker compose"
 function de_c {
   ${DC} up -d
   ${DC} exec -T ${CONTAINER_NAME} sh -x -c "$1"
+  ${DC} down
 }
 
-# ${DC} up -d
-# ${DC} exec -T ${CONTAINER_NAME} sh -c "yarn install"
-# ${DC} exec -T ${CONTAINER_NAME} sh -c "npx lint-staged"
-# ${DC} exec -T ${CONTAINER_NAME} sh -c "yarn build"
 de_c "yarn install \
   && npx lint-staged \
   && yarn build"

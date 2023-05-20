@@ -7,10 +7,9 @@ services:
     tty: true
     volumes:
       - ./:/app
-      # - react-docker-project-node-modules:/app/node_modules
+      - react-docker-project-node-modules:/app/node_modules
     ports:
       - 3000:3000
-    # command: "yarn dev --host"
 
 volumes:
   react-docker-project-node-modules:

@@ -10,6 +10,3 @@ WORKDIR /app
 
 # npmのアップデート
 RUN npm install -g npm@9.6.7
-
-# 依存関係のインストール
-RUN yarn install
