@@ -25,6 +25,7 @@ module.exports = {
     'react/require-default-props': 'off', //デフォルト引数の有効化
     'no-shadow': 'off', //eslintのenumsバグを修正する為に追加
     '@typescript-eslint/no-shadow': ['error'], //eslintのenumsバグを修正する為に追加
+    'react/jsx-props-no-spreading': 'off', //propsのspreadを許可,propsにオブジェクトを渡す為に追加
     'no-restricted-imports': [
       'error',
       {

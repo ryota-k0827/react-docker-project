@@ -15,6 +15,9 @@ function de_c {
   fi
 }
 
-de_c "yarn install \
+de_c "yarn install --frozen-lockfile \
   && npx lint-staged \
   && yarn build"
+
+set -x
+docker container cp ${CONTAINER_NAME}:/app/node_modules .

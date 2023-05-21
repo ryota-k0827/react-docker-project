@@ -6,7 +6,9 @@ init: build up
 
 build:
 	$(dc) build --no-cache
+	$(dc) up -d
 	$(MAKE) modules/cp
+	$(MAKE) down
 
 up:
 	$(dc) up
@@ -57,7 +59,7 @@ y/dev:
 	$(de) $(container_name) sh -c "yarn dev --host"
 
 modules/cp:
-	docker container cp $(container_name):/app/node_modules $(PWD)
+	docker container cp $(container_name):/app/node_modules .
 
 rm/modules:
 	$(de) $(container_name) sh -c "rm -rf node_modules"
