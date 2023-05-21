@@ -1,3 +1,4 @@
+import { Button } from '@mui/material'
 import { useState } from 'react'
 
 import viteLogo from 'public/vite.svg'
@@ -22,11 +23,11 @@ export const App = () => {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Vite + React</h1>
+      <h1>Vite + React + Material UI</h1>
       <div className="card">
-        <button type="button" onClick={onClick}>
+        <Button variant="contained" type="button" onClick={onClick}>
           count is {count}
-        </button>
+        </Button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>

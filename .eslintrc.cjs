@@ -22,6 +22,7 @@ module.exports = {
   plugins: ['react', 'import', 'unused-imports', '@typescript-eslint'],
   ignorePatterns: ['.eslintrc.cjs', 'dist/', 'node_modules/', '**.config.*', 'build/', 'public/'],
   rules: {
+    'react/require-default-props': 'off', //デフォルト引数の有効化
     'no-shadow': 'off', //eslintのenumsバグを修正する為に追加
     '@typescript-eslint/no-shadow': ['error'], //eslintのenumsバグを修正する為に追加
     'no-restricted-imports': [
