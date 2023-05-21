@@ -4,23 +4,16 @@ de := docker exec -it
 
 init: build up
 
+
 build:
 	$(dc) build --no-cache
 	$(dc) up -d
 	$(MAKE) modules/cp
-	$(MAKE) down
+	$(dc) down
 
 up:
 	$(dc) up
 
-down:
-	$(dc) down
-
-exec:
-	$(de) $(container_name) sh
-
-exec-c:
-	$(de) $(container_name) sh -c "$(c)"
 
 y/install:
 	$(de) $(container_name) sh -c "yarn install --frozen-lockfile"
@@ -58,6 +51,13 @@ y/build:
 y/dev:
 	$(de) $(container_name) sh -c "yarn dev --host"
 
+
+exec:
+	$(de) $(container_name) sh
+
+exec-c:
+	$(de) $(container_name) sh -c "$(c)"
+
 modules/cp:
 	docker container cp $(container_name):/app/node_modules .
 
@@ -75,6 +75,7 @@ env/cp:
 
 open/web:
 	open http://localhost:3000
+
 
 help:
 	cat ./docs/make-help.txt

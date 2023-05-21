@@ -11,9 +11,6 @@ make build
 make up
 -> コンテナを作成し、開始する
 
-make down
--> コンテナの停止と削除
-
 
 <yarnコマンド>
 make y/install
