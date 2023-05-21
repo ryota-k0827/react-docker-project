@@ -1,9 +1,9 @@
-name: 'Format By ESLint and Prettier and CSpell'
+name: 'Code Check'
 
 on: push
 
 jobs:
-  format:
+  Code Check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -11,8 +11,11 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 18.16.0
-          npm-version: 9.6.7
-      - name: Format
+      - name: Setup yarn
         run: |
+          npm install -g npm@9.6.7
           yarn install --frozen-lockfile
-          yarn fix
+      - name: Format By ESLint and Prettier and CSpell
+        run: yarn fix
+      - name: Build
+        run: yarn build
